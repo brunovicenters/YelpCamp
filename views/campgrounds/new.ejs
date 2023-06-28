@@ -2,14 +2,17 @@
 <div class="row">
   <h1 class="text-center">New Campground</h1>
   <div class="col-6 offset-3">
-    <form action="/campgrounds" method="POST">
+    <form action="/campgrounds" method="POST" novalidate class="validated-form">
       <div class="mb-3">
         <label class="form-label" for="title">Title:</label>
         <input
           class="form-control"
           type="text"
           name="campground[title]"
-          id="title" />
+          id="title"
+          required />
+        <div class="valid-feedback">Great name!</div>
+        <div class="invalid-feedback">How do we call it?</div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="location">Location:</label>
@@ -17,7 +20,10 @@
           class="form-control"
           type="text"
           name="campground[location]"
-          id="location" />
+          id="location"
+          required />
+        <div class="valid-feedback">I love that place!</div>
+        <div class="invalid-feedback">How are we going to get there?</div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="image">Image Url:</label>
@@ -25,7 +31,10 @@
           class="form-control"
           type="text"
           name="campground[image]"
-          id="image" />
+          id="image"
+          required />
+        <div class="valid-feedback">It's beautiful!</div>
+        <div class="invalid-feedback">Let me see if it's beautiful!</div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="description">Description:</label>
@@ -33,7 +42,10 @@
           class="form-control"
           type="text"
           name="campground[description]"
-          id="description"></textarea>
+          id="description"
+          required></textarea>
+        <div class="valid-feedback">It seems interesting!</div>
+        <div class="invalid-feedback">Tell us about the campground!</div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="price">Price:</label>
@@ -46,7 +58,10 @@
             placeholder="0.00"
             aria-label="price"
             aria-describedby="price-label"
-            name="campground[price]" />
+            name="campground[price]"
+            required />
+          <div class="valid-feedback">It's the best price!</div>
+          <div class="invalid-feedback">You need a price!</div>
         </div>
       </div>
       <div class="mb-3">

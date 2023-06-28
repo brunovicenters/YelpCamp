@@ -2,7 +2,11 @@
 <div class="row">
   <h1 class="text-center">Edit Campground</h1>
   <div class="col-6 offset-3">
-    <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST">
+    <form
+      action="/campgrounds/<%=campground._id%>?_method=PUT"
+      method="POST"
+      novalidate
+      class="validated-form">
       <div class="mb-3">
         <label class="form-label" for="title">Title:</label>
         <input
@@ -10,7 +14,10 @@
           type="text"
           name="campground[title]"
           id="title"
-          value="<%= campground.title %>" />
+          value="<%= campground.title %>"
+          required />
+        <div class="valid-feedback">Great name!</div>
+        <div class="invalid-feedback">How do we call it?</div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="location">Location:</label>
@@ -19,7 +26,10 @@
           type="text"
           name="campground[location]"
           id="location"
-          value="<%= campground.location %>" />
+          value="<%= campground.location %>"
+          required />
+        <div class="valid-feedback">I love that place!</div>
+        <div class="invalid-feedback">How are we going to get there?</div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="image">Image Url:</label>
@@ -28,7 +38,10 @@
           type="text"
           name="campground[image]"
           id="image"
-          value="<%= campground.image %>" />
+          value="<%= campground.image %>"
+          required />
+        <div class="valid-feedback">It's beautiful!</div>
+        <div class="invalid-feedback">Let me see if it's beautiful!</div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="description">Description:</label>
@@ -36,9 +49,12 @@
           class="form-control"
           type="text"
           name="campground[description]"
-          id="description">
+          id="description"
+          required>
           <%= campground.description %>
         </textarea>
+        <div class="valid-feedback">It seems interesting!</div>
+        <div class="invalid-feedback">Tell us about the campground!</div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="price">Price:</label>
@@ -52,7 +68,10 @@
             aria-label="price"
             aria-describedby="price-label"
             name="campground[price]"
-            value="<%= campground.price %>" />
+            value="<%= campground.price %>"
+            required />
+          <div class="valid-feedback">It's the best price!</div>
+          <div class="invalid-feedback">You need a price!</div>
         </div>
       </div>
       <div class="mb-3">
