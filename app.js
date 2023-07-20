@@ -44,6 +44,7 @@ app.use(session(sessionOptions));
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
+  res.locals.del = req.flash("del");
   res.locals.error = req.flash("error");
   next();
 });
