@@ -3,6 +3,7 @@ const router = express.Router({ mergeParams: true });
 const passport = require("passport");
 const User = require("../models/user");
 const catchAsync = require("../utils/catchAsync");
+const { func } = require("joi");
 
 router.get("/register", (req, res) => {
   res.render("users/register");
@@ -44,5 +45,15 @@ router.post(
     res.redirect("/campgrounds");
   }
 );
+
+router.get("/logout", (req, res) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    req.flash("success", "Goodbye!");
+    res.redirect("/campgrounds");
+  });
+});
 
 module.exports = router;
