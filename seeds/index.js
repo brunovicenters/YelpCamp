@@ -31,8 +31,8 @@ async function seedImg() {
 }
 
 const seedDB = async () => {
-  // await Campground.deleteMany({});
-  // await Review.deleteMany({});
+  await Campground.deleteMany({});
+  await Review.deleteMany({});
   for (let i = 0; i < 50; i++) {
     const random1000 = Math.floor(Math.random() * 1000);
     const price = Math.floor(Math.random() * 20) + 10;
@@ -40,7 +40,16 @@ const seedDB = async () => {
       author: "64d255b7fd885687626a660e",
       location: `${cities[random1000].city}, ${cities[random1000].state}`,
       title: `${sample(descriptors)} ${sample(places)}`,
-      image: await seedImg(),
+      images: [
+        {
+          url: "https://res.cloudinary.com/ddmvvgno3/image/upload/v1692621592/YelpCamp/qzulotvezuw290nzdeb0.jpg",
+          filename: "YelpCamp/qzulotvezuw290nzdeb0",
+        },
+        {
+          url: "https://res.cloudinary.com/ddmvvgno3/image/upload/v1692621672/YelpCamp/viyywy9oxea6iwihiro1.jpg",
+          filename: "YelpCamp/viyywy9oxea6iwihiro1",
+        },
+      ],
       description:
         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis magnam sequi quis, animi corrupti, velit earum voluptatibus tenetur itaque dolorum minus possimus nesciunt est, fugit eveniet alias natus voluptas cupiditate!",
       price,
