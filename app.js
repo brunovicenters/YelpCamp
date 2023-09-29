@@ -11,6 +11,7 @@ const flash = require("connect-flash");
 const methodOverride = require("method-override");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
+const mongoSanitize = require("express-mongo-sanitize");
 
 const ExpressError = require("./utils/ExpressError");
 const User = require("./models/user");
@@ -37,6 +38,10 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+
+app.use(express.static(path.join(__dirname, "public")));
+
+app.use(mongoSanitize);
 
 const sessionOptions = {
   secret: "secret",
@@ -69,8 +74,6 @@ app.use((req, res, next) => {
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/reviews", reviewRoutes);
 app.use("/", userRoutes);
-
-app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
   res.render("home");
