@@ -1,0 +1,5 @@
+.imgCamp {
+  height: 50vh;
+  object-fit: cover;
+  object-position: center;
+}
