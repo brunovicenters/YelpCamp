@@ -41,7 +41,7 @@ app.use(methodOverride("_method"));
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use(mongoSanitize);
+app.use(mongoSanitize());
 
 const sessionOptions = {
   secret: "secret",
