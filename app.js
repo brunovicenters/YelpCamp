@@ -12,6 +12,7 @@ const methodOverride = require("method-override");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const mongoSanitize = require("express-mongo-sanitize");
+const helmet = require("helmet");
 
 const ExpressError = require("./utils/ExpressError");
 const User = require("./models/user");
@@ -44,11 +45,13 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(mongoSanitize());
 
 const sessionOptions = {
+  name: "YC",
   secret: "secret",
   resave: false,
   saveUninitialized: true,
   cookie: {
     httpOnly: true,
+    // secure: true,
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
     maxAge: 1000 * 60 * 60 * 24 * 7,
   },
@@ -71,6 +74,12 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
+
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/reviews", reviewRoutes);
 app.use("/", userRoutes);
@@ -85,7 +94,9 @@ app.all("*", (req, res, next) => {
 
 app.use((err, req, res, next) => {
   const { statusCode = 500 } = err;
-  if (!err.message) err.message = "Oh No, Something Went Wrong!";
+  if (!err.message) {
+    err.message = "Oh No, Something Went Wrong!";
+  }
   res.status(statusCode).render("error", { err });
 });
 
