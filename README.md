@@ -2,7 +2,7 @@
 
 A study project of a camping website developed using JS, Express, MongoDB, Bootstrap, and some others modern technologies.
 
-<img href="https://asset.cloudinary.com/ddmvvgno3/98dff15add599a0960c66d27049e0dc2" alt="Home page Yelp Camp">
+![YelpCamp Homepage](https://asset.cloudinary.com/ddmvvgno3/98dff15add599a0960c66d27049e0dc2)
 
 ## Sobre
 
