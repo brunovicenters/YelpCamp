@@ -2,7 +2,7 @@
 
 A study project of a camping website developed using JS, Express, MongoDB, Bootstrap, and some others modern technologies.
 
-[YelpCamp Homepage](https://drive.google.com/file/d/14mzIY3BtHg5Oo6c6lTr5Iurc5lTAomaV/view?usp=sharing)
+![YelpCamp Homepage](/public//YelpHome.png)
 
 ## About
 
